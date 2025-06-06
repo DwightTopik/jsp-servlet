@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+        version="4.0"
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+
+  <display-name>PassangerProject</display-name>
+
+  <!-- AddPassengerServlet -->
+  <servlet>
+    <servlet-name>AddPassengerServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.AddPassengerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddPassengerServlet</servlet-name>
+    <url-pattern>/addPassenger</url-pattern>
+  </servlet-mapping>
+
+  <!-- ConfirmBookingServlet -->
+  <servlet>
+    <servlet-name>ConfirmBookingServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.ConfirmBookingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmBookingServlet</servlet-name>
+    <url-pattern>/confirmBooking</url-pattern>
+  </servlet-mapping>
+
+  <!-- DashboardStatsServlet -->
+  <servlet>
+    <servlet-name>DashboardStatsServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.DashboardStatsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DashboardStatsServlet</servlet-name>
+    <url-pattern>/getDashboardStats</url-pattern>
+  </servlet-mapping>
+
+  <!-- DeleteBookingServlet -->
+  <servlet>
+    <servlet-name>DeleteBookingServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.DeleteBookingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteBookingServlet</servlet-name>
+    <url-pattern>/deleteBooking</url-pattern>
+  </servlet-mapping>
+
+  <!-- DeletePassengerServlet -->
+  <servlet>
+    <servlet-name>DeletePassengerServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.DeletePassengerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePassengerServlet</servlet-name>
+    <url-pattern>/deletePassenger</url-pattern>
+  </servlet-mapping>
+
+  <!-- GetAllBookingsServlet -->
+  <servlet>
+    <servlet-name>GetAllBookingsServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.GetAllBookingsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllBookingsServlet</servlet-name>
+    <url-pattern>/getAllBookings</url-pattern>
+  </servlet-mapping>
+
+  <!-- GetBookingByPNRServlet -->
+  <servlet>
+    <servlet-name>GetBookingByPNRServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.GetBookingByPNRServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetBookingByPNRServlet</servlet-name>
+    <url-pattern>/getBookingByPNR</url-pattern>
+  </servlet-mapping>
+
+  <!-- GetLatestBookingsServlet -->
+  <servlet>
+    <servlet-name>GetLatestBookingsServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.GetLatestBookingsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetLatestBookingsServlet</servlet-name>
+    <url-pattern>/getLatestBookings</url-pattern>
+  </servlet-mapping>
+
+  <!-- GetPassengerByIdServlet -->
+  <servlet>
+    <servlet-name>GetPassengerByIdServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.GetPassengerByIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetPassengerByIdServlet</servlet-name>
+    <url-pattern>/getPassengerById</url-pattern>
+  </servlet-mapping>
+
+  <!-- PassengerSearchServlet -->
+  <servlet>
+    <servlet-name>PassengerSearchServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.PassengerSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PassengerSearchServlet</servlet-name>
+    <url-pattern>/searchPassenger</url-pattern>
+  </servlet-mapping>
+
+  <!-- PassengerServlet -->
+  <servlet>
+    <servlet-name>PassengerServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.PassengerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PassengerServlet</servlet-name>
+    <url-pattern>/getPassengers</url-pattern>
+  </servlet-mapping>
+
+  <!-- SearchTrainServlet -->
+  <servlet>
+    <servlet-name>SearchTrainServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.SearchTrainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchTrainServlet</servlet-name>
+    <url-pattern>/searchTrain</url-pattern>
+  </servlet-mapping>
+
+  <!-- TrainDataServlet -->
+  <servlet>
+    <servlet-name>TrainDataServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.TrainDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrainDataServlet</servlet-name>
+    <url-pattern>/getTrainData</url-pattern>
+  </servlet-mapping>
+
+  <!-- TrainScheduleServlet -->
+  <servlet>
+    <servlet-name>TrainScheduleServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.TrainScheduleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrainScheduleServlet</servlet-name>
+    <url-pattern>/getTrainSchedule</url-pattern>
+  </servlet-mapping>
+
+  <!-- UpdatePassengerServlet -->
+  <servlet>
+    <servlet-name>UpdatePassengerServlet</servlet-name>
+    <servlet-class>ru.vsu.cs.servlets.UpdatePassengerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePassengerServlet</servlet-name>
+    <url-pattern>/updatePassenger</url-pattern>
+  </servlet-mapping>
+
+</web-app>
