@@ -8,7 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.PassengerDAO;
+import ru.vsu.cs.service.PassengerService;
 
 @WebServlet("/deletePassenger")
 public class DeletePassengerServlet extends HttpServlet {
@@ -21,7 +21,7 @@ public class DeletePassengerServlet extends HttpServlet {
 
 				int id = Integer.parseInt(request.getParameter("id"));
 
-				boolean success = PassengerDAO.deletePassenger(id);
+				boolean success = PassengerService.getInstance().deletePassenger(id);
 
 				StringBuilder json = new StringBuilder();
 		json.append("{");

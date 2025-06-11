@@ -10,8 +10,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.TrainScheduleDAO;
 import ru.vsu.cs.model.TrainSchedule;
+import ru.vsu.cs.service.TrainScheduleService;
 
 @WebServlet("/getTrainSchedule")
 public class TrainScheduleServlet extends HttpServlet {
@@ -22,7 +22,7 @@ public class TrainScheduleServlet extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		List<TrainSchedule> trainList = TrainScheduleDAO.getAllTrainSchedules();
+		List<TrainSchedule> trainList = TrainScheduleService.getInstance().getAllTrainSchedules();
 
 		StringBuilder json = new StringBuilder();
 		json.append("[");

@@ -8,8 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.BookingDAO;
 import ru.vsu.cs.model.Booking;
+import ru.vsu.cs.service.BookingService;
 
 @WebServlet("/getBookingByPNR")
 public class GetBookingByPNRServlet extends HttpServlet {
@@ -27,7 +27,7 @@ public class GetBookingByPNRServlet extends HttpServlet {
             return;
         }
 
-        Booking booking = BookingDAO.getBookingByPNR(pnr);
+        Booking booking = BookingService.getInstance().getBookingByPNR(pnr);
         if (booking == null) {
             out.write("{\"error\": \"No booking found for this PNR.\"}");
         } else {

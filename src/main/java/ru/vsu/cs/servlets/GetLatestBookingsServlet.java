@@ -9,8 +9,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.BookingDAO;
 import ru.vsu.cs.model.Booking;
+import ru.vsu.cs.service.BookingService;
 
 @WebServlet("/getLatestBookings")
 public class GetLatestBookingsServlet extends HttpServlet {
@@ -22,7 +22,7 @@ public class GetLatestBookingsServlet extends HttpServlet {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 
-		List<Booking> bookings = BookingDAO.getLatestBookings(3);
+		List<Booking> bookings = BookingService.getInstance().getLatestBookings(3);
 		StringBuilder json = new StringBuilder();
 		json.append("[");
 		for (int i = 0; i < bookings.size(); i++) {

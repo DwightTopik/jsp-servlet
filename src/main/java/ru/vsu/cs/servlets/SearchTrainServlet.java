@@ -10,8 +10,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.TrainScheduleDAO;
 import ru.vsu.cs.model.TrainSchedule;
+import ru.vsu.cs.service.TrainScheduleService;
 
 @WebServlet("/searchTrain")
 public class SearchTrainServlet extends HttpServlet {
@@ -31,7 +31,7 @@ public class SearchTrainServlet extends HttpServlet {
 			return;
 		}
 
-		List<TrainSchedule> trains = TrainScheduleDAO.searchTrains(origin, destination);
+		List<TrainSchedule> trains = TrainScheduleService.getInstance().searchTrains(origin, destination);
 		StringBuilder json = new StringBuilder();
 		json.append("{\"trains\":[");
 

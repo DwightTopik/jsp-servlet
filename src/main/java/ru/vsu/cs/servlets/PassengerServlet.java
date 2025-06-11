@@ -9,8 +9,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.PassengerDAO;
 import ru.vsu.cs.model.Passenger;
+import ru.vsu.cs.service.PassengerService;
 
 @WebServlet("/getPassengers")
 public class PassengerServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class PassengerServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        List<Passenger> passengers = PassengerDAO.getAllPassengers();
+        List<Passenger> passengers = PassengerService.getInstance().getAllPassengers();
 
         StringBuilder json = new StringBuilder();
         json.append("[");

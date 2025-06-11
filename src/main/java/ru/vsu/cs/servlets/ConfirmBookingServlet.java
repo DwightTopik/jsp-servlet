@@ -9,8 +9,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.BookingDAO;
 import ru.vsu.cs.model.Booking;
+import ru.vsu.cs.service.BookingService;
 
 @WebServlet("/confirmBooking")
 public class ConfirmBookingServlet extends HttpServlet {
@@ -31,18 +31,18 @@ public class ConfirmBookingServlet extends HttpServlet {
 				requestData.append(line);
 			}
 
-			List<Booking> bookings = BookingDAO.parseBookings(requestData.toString());
+			List<Booking> bookings = BookingService.getInstance().parseBookings(requestData.toString());
 			if (bookings == null || bookings.isEmpty()) {
 				jsonResponse = "{\"success\": false, \"message\": \"No passengers selected.\"}";
 				out.write(jsonResponse);
 				return;
 			}
 
-			String pnr = BookingDAO.generatePNR();
+			String pnr = BookingService.getInstance().generatePNR();
 			boolean allSaved = true;
 			for (Booking booking : bookings) {
 				booking.setPnr(pnr);
-				if (!BookingDAO.saveBooking(booking)) {
+				if (!BookingService.getInstance().saveBooking(booking)) {
 					allSaved = false;
 					break;
 				}

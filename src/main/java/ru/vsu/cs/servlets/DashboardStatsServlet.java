@@ -8,9 +8,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.BookingDAO;
-import ru.vsu.cs.dao.PassengerDAO;
-import ru.vsu.cs.dao.TrainScheduleDAO;
+import ru.vsu.cs.service.BookingService;
+import ru.vsu.cs.service.PassengerService;
+import ru.vsu.cs.service.TrainScheduleService;
 
 @WebServlet("/getDashboardStats")
 public class DashboardStatsServlet extends HttpServlet {
@@ -21,9 +21,9 @@ public class DashboardStatsServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        int passengerCount = PassengerDAO.getPassengerCount();
-        int trainCount = TrainScheduleDAO.getTrainCount();
-        int totalBookings = BookingDAO.getTotalBookingsCount();  
+        int passengerCount = PassengerService.getInstance().getPassengerCount();
+        int trainCount = TrainScheduleService.getInstance().getTrainCount();
+        int totalBookings = BookingService.getInstance().getTotalBookingsCount();  
 
                 String jsonResponse = "{"
                 + "\"totalPassengers\": " + passengerCount + ", "

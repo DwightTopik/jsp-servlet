@@ -8,8 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.PassengerDAO;
 import ru.vsu.cs.model.Passenger;
+import ru.vsu.cs.service.PassengerService;
 
 @WebServlet("/addPassenger")
 public class AddPassengerServlet extends HttpServlet {
@@ -31,7 +31,7 @@ public class AddPassengerServlet extends HttpServlet {
 
 				Passenger newPassenger = new Passenger(0, username, fullName, age, dob, gender, address, contact, idProof);
 
-				boolean success = PassengerDAO.addPassenger(newPassenger);
+				boolean success = PassengerService.getInstance().addPassenger(newPassenger);
 
 				StringBuilder json = new StringBuilder();
 		json.append("{");

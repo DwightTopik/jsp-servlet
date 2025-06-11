@@ -8,7 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.BookingDAO;
+import ru.vsu.cs.service.BookingService;
 
 @WebServlet("/deleteBooking")
 public class DeleteBookingServlet extends HttpServlet {
@@ -21,7 +21,7 @@ public class DeleteBookingServlet extends HttpServlet {
 
 				String pnr = request.getParameter("pnr");
 
-				boolean success = BookingDAO.deleteBooking(pnr);
+				boolean success = BookingService.getInstance().deleteBooking(pnr);
 
 				StringBuilder json = new StringBuilder();
 		json.append("{");

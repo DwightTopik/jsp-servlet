@@ -8,8 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ru.vsu.cs.dao.PassengerDAO;
 import ru.vsu.cs.model.Passenger;
+import ru.vsu.cs.service.PassengerService;
 
 @WebServlet("/getPassengerById")
 public class GetPassengerByIdServlet extends HttpServlet {
@@ -22,7 +22,7 @@ public class GetPassengerByIdServlet extends HttpServlet {
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            Passenger passenger = PassengerDAO.getPassengerById(id);
+            Passenger passenger = PassengerService.getInstance().getPassengerById(id);
 
             PrintWriter out = response.getWriter();
             if (passenger != null) {

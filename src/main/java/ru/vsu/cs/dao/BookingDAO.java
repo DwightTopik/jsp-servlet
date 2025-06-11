@@ -1,10 +1,16 @@
 package ru.vsu.cs.dao;
 
-import ru.vsu.cs.model.Booking;
-
 import java.io.InputStream;
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import ru.vsu.cs.model.Booking;
 
 public class BookingDAO {
 	private static final String DB_URL = loadDbUrl();
@@ -21,10 +27,6 @@ public class BookingDAO {
 
 	public static Connection connect() throws SQLException {
 		return DriverManager.getConnection(DB_URL);
-	}
-
-	public static String generatePNR() {
-		return UUID.randomUUID().toString().substring(0, 8).toUpperCase();
 	}
 
 	public static boolean saveBooking(Booking booking) {
@@ -80,71 +82,6 @@ public class BookingDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		return bookings;
-	}
-
-		public static List<Booking> parseBookings(String jsonData) {
-		List<Booking> bookings = new ArrayList<>();
-		if (jsonData == null || jsonData.isEmpty()) {
-			return bookings;
-		}
-
-		jsonData = jsonData.replace("[", "").replace("]", "").trim(); 		String[] bookingEntries = jsonData.split("\\},\\{"); 		Random random = new Random();
-
-		for (String entry : bookingEntries) {
-			entry = entry.replace("{", "").replace("}", "").trim(); 			String[] keyValuePairs = entry.split(",");
-
-			Booking booking = new Booking();
-			for (String pair : keyValuePairs) {
-				String[] keyValue = pair.split(":", 2);
-				if (keyValue.length != 2)
-					continue;
-
-				String key = keyValue[0].trim().replace("\"", "");
-				String value = keyValue[1].trim().replace("\"", "");
-
-				switch (key) {
-				case "passengerId":
-					int passengerId = PassengerDAO.getPassengerId(value);
-					booking.setPassengerId(passengerId);
-					break;
-				case "passengerName":
-					booking.setPassengerName(value);
-					break;
-				case "trainNo":
-					booking.setTrainNo(value);
-					break;
-				case "trainName":
-					booking.setTrainName(value);
-					break;
-				case "travelDate":
-					booking.setTravelDate(value);
-					break;
-				case "trainClass":
-					booking.setTrainClass(value);
-					break;
-				case "seat":
-					booking.setSeat(value);
-					break;
-				case "status":
-					booking.setStatus(value);
-					break;
-				case "price":
-					booking.setPrice(Double.parseDouble(value));
-					break;
-				case "seatPreference":
-					booking.setSeatPreference(value);
-					break;
-				case "foodPreference":
-					booking.setFoodPreference(value);
-					break;
-				}
-			}
-
-						booking.setSeatNumber("S-" + (random.nextInt(100) + 1));
-
-			bookings.add(booking);
 		}
 		return bookings;
 	}
